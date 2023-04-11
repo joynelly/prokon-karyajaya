@@ -9,7 +9,7 @@ function AboutUsContent(){
                     <div className="col-span-1 row-span-1 rounded-xl bg-white">
                         <img src={logo_kjs} className="h-25" alt="KSJ Logo" />
                     </div>
-                    <div className="col-span-1 row-span-2 rounded-xl bg-white p-4 font-serif text-base leading-10">
+                    <div className="col-span-1 row-span-2 rounded-xl bg-white p-4 font-serif text-base leading-8">
                         CV. Karyajaya Survey adalah perusahaan yang bergerak
                         di bidang jasa seperti konsultasi, servei, dan pemetaan bumi.
                         Selain itu, CV. Karyajaya Survey menyediakan servoce, kalibrasi,
@@ -18,11 +18,11 @@ function AboutUsContent(){
                         Johor, Kota Medan. 
                     </div>
                     <div className="col-span-2 row-span-2 rounded-xl bg-white">
-                        <div class="flex justify-center items-center pt-5 font-norwester text-2xl">MAPS</div>
+                        <div class="flex justify-center items-center pt-3 font-norwester text-lg">Location</div>
                         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7964.545799234371!2d98.67595!3d3.524287!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30313ab9485f9527%3A0xeb1c09e565530aae!2sKaryajaya%20Survey!5e0!3m2!1sid!2sid!4v1681191310732!5m2!1sid!2sid" className="b-0 w-full h-full pt-2 pb-20 px-3" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                     <div className="col-span-1 row-span-1 rounded-xl bg-white">
-                        <ul className="text-base leading-10 my-3">
+                        <ul className="text-base leading-7 my-3">
                             <li class="mb-1">
                                 <a href="/" class="flex items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 ml-5 mr-3">
