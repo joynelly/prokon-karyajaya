@@ -5,23 +5,23 @@ import logo_kjs from "../assets/logo-kjs.png";
 
 function Navbar() {
   return (
-    <nav className="bg-white-kj p-4">
+    <nav className="bg-white-kj px-20 py-5">
       <div className="flex items-center justify-between">
         {/* Company logo */}
-        <div className="flex-shrink-0 pl-10 flex items-center">
-          <img src={logo_kjs} alt="Company logo" className="h-15 w-10" />
-          <span class="text-xl font-norwester font-extrabold whitespace-nowrap text-blue-800 uppercase mt-5 ml-2">Karyajaya</span>
+        <div className="flex-shrink-0 flex items-center">
+          <img src={logo_kjs} alt="Company logo" className="h-10" />
+          <span class="text-3xl font-norwester font-extrabold whitespace-nowrap text-blue-800 uppercase mt-4 ml-2">Karyajaya</span>
         </div>
 
         {/* Menu options */}
         <div className="hidden md:flex items-center justify-center">
-          <a href="/" className="font-norwester text-dark-blue-kj mx-4 hover:text-gray-300">
+          <a href="/" className="font-norwester text-lg text-dark-blue-kj mx-4 mt-4 hover:bg-orange-kj hover:rounded hover:px-5 hover:py-3">
             HOME
           </a>
-          <a href="/" className="font-norwester text-dark-blue-kj mx-4 hover:text-gray-300">
+          <a href="/" className="font-norwester text-lg text-dark-blue-kj mx-4 mt-4 hover:bg-orange-kj hover:rounded hover:px-5 hover:py-3">
             PRODUCT
           </a>
-          <a href="/" className="font-norwester text-dark-blue-kj mx-4 hover:text-gray-300">
+          <a href="/" className="font-norwester text-lg text-dark-blue-kj mx-4 mt-4 hover:bg-orange-kj hover:rounded hover:px-5 hover:py-3">
             ABOUT US
           </a>
         </div>
@@ -38,6 +38,7 @@ function Navbar() {
           </button>
         </div>
       </div>
+      <hr className="border-rose-500 border-b-2 mt-6"/>
     </nav>
   );
 }
