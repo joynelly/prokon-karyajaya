@@ -15,13 +15,13 @@ function Navbar() {
 
         {/* Menu options */}
         <div className="hidden md:flex items-center justify-center">
-          <a href="/" className="font-norwester text-lg text-dark-blue-kj mx-4 mt-4 hover:bg-orange-kj hover:rounded hover:px-5 hover:py-3">
+          <a href="/" className="font-norwester text-lg text-dark-blue-kj mx-4 mt-4 hover:bg-orange-kj hover:rounded hover:px-5 hover:py-1">
             HOME
           </a>
-          <a href="/" className="font-norwester text-lg text-dark-blue-kj mx-4 mt-4 hover:bg-orange-kj hover:rounded hover:px-5 hover:py-3">
+          <a href="/" className="font-norwester text-lg text-dark-blue-kj mx-4 mt-4 hover:bg-orange-kj hover:rounded hover:px-5 hover:py-1">
             PRODUCT
           </a>
-          <a href="/aboutus" className="font-norwester text-lg text-dark-blue-kj mx-4 mt-4 hover:bg-orange-kj hover:rounded hover:px-5 hover:py-3">
+          <a href="/aboutus" className="font-norwester text-lg text-dark-blue-kj mx-4 mt-4 hover:bg-orange-kj hover:rounded hover:px-5 hover:py-1">
             ABOUT US
           </a>
         </div>
