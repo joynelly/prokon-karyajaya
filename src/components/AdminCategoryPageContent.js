@@ -121,8 +121,10 @@ function AdminCategoryPageContent(){
                 </div>
                 {/* Add and Search */}
                 <div className="flex items-center justify-between">
-                    <button className="bg-light-blue-kj rounded-xl p-3 font-semibold text-white">
-                        + Add Category
+                    <button className="bg-dark-blue-kj rounded-xl p-3 font-semibold text-white hover:bg-light-blue-kj">
+                        <a href="/addcategorypage">
+                            + Add Categories
+                        </a>
                     </button>
                     <div className="flex items-center">
                         <input
@@ -131,7 +133,7 @@ function AdminCategoryPageContent(){
                             className="border rounded-full py-2 pl-4 pr-20 bg-grey-kj text-white mr-2"
                             onChange={handleFilter}
                         />
-                        <button className="bg-light-blue-kj rounded-full p-2 px-5">
+                        <button className="bg-dark-blue-kj rounded-full p-2 px-5 hover:bg-light-blue-kj">
                             <FontAwesomeIcon icon={faSearch} className="text-white" />
                         </button>
                     </div>
