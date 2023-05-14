@@ -1,7 +1,9 @@
 import React, { Fragment } from "react";
 import logo_kjs from "../assets/logo-kjs.png";
+import {useAuth} from "../lib/authHook";
 
 function AdminLandingPageContent(){
+    useAuth();
     return(
         <Fragment>
             <div className="w-100 relative mt-3 mb-7 mx-20 rounded-xl bg-pink-kj">
