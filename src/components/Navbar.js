@@ -24,6 +24,9 @@ function Navbar() {
           <a href="/aboutus" className="font-norwester text-lg text-dark-blue-kj mx-4 mt-4 hover:bg-orange-kj hover:rounded hover:px-5 hover:py-1">
             ABOUT US
           </a>
+          <a href="/adminlogin" className="font-norwester text-lg text-dark-blue-kj mx-4 mt-4 hover:bg-orange-kj hover:rounded hover:px-5 hover:py-1">
+            ADMIN
+          </a>
         </div>
 
         {/* Search bar */}
