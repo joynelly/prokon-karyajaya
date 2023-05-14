@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { useState } from "react";
-import {storeTokenInLocalStorage, getTokenFromLocalStorage} from "../lib/auth";
+import {storeTokenInLocalStorage} from "../lib/auth";
 
 function AdminLoginPageContent(){
     const [email, setEmail] = useState("");

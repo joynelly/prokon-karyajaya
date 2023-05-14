@@ -19,10 +19,8 @@ export async function checkAuthenticated() {
         Authorization: `${token}`
       }
     });
-    alert(response.status);
-
-    const { authenticated = false } = response.data;
-    return authenticated ? true : false;
+    
+    return response.status === 200 ? true : false;
   }
   catch (err) {
     console.log('getAuthenticatedUser, Something Went Wrong', err);
