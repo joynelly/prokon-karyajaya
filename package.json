@@ -11,12 +11,10 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-<<<<<<< HEAD
     "axios": "^1.4.0",
     "moment": "^2.29.4",
-=======
+    "chart.js": "^4.3.0",
     "classnames": "^2.3.2",
->>>>>>> 83d5d4edcdce5508ea4e93a3f952707031047cda
     "react": "^18.2.0",
     "react-data-table-component": "^7.5.3",
     "react-data-table-component-extensions": "^1.6.0",

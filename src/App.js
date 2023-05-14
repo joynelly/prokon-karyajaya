@@ -14,6 +14,7 @@ import AdminBrandPage from './webpage/AdminBrandPage/AdminBrandPage';
 import AddProductPage from './webpage/AddProductPage/AddProductPage';
 import AddCategoryPage from './webpage/AddCategoryPage/AddCategoryPage';
 import AddBrandPage from './webpage/AddBrandPage/AddBrandPage';
+import SellingDashboardPage from './webpage/SellingDashboardPage/SellingDashboardPage';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/detailproduct" element={<DetailProductPage/>}/>
           <Route path="/jasa" element={<JasaPage/>}/>
           <Route path="/detailjasa" element={<DetailJasaPage/>}/>
+          <Route path="/sellingdash" element={<SellingDashboardPage/>}/>
           <Route path="/adminlogin" element={<AdminLoginPage/>}/>
           <Route path="/adminlandingpage" element={<AdminLandingPage/>}/>
           <Route path="/adminproductpage" element={<AdminProductPage/>}/>
