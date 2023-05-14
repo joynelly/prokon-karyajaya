@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import { getTokenFromLocalStorage } from '../lib/auth';
 
 function AddCategoryPageContent(){
 
@@ -12,12 +13,18 @@ function AddCategoryPageContent(){
         formData.append('name', name);
         formData.append('image', image);
 
-        fetch(`${process.env.REACT_APP_API_URL}/api/categories`, {
+        fetch(`${process.env.REACT_APP_API_URL}/categories`, {
             method: 'POST',
+            headers: {
+                "authorization": getTokenFromLocalStorage(),
+            },
             body: formData
         }).then(response => {
-            console.log(response);
-            window.location.href = "/admincategorypage";
+            if(response.status === 200){
+                window.location.href = "/admincategorypage"
+            }else{
+                alert("Something went wrong, please try again later");
+            }
         }).catch(error => {
             console.log(error);
         });
