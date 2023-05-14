@@ -11,6 +11,9 @@ import AdminLandingPage from './webpage/AdminLandingPage/AdminLandingPage';
 import AdminProductPage from './webpage/AdminProductPage/AdminProductPage';
 import AdminCategoryPage from './webpage/AdminCategoryPage/AdminCategoryPage';
 import AdminBrandPage from './webpage/AdminBrandPage/AdminBrandPage';
+import AddProductPage from './webpage/AddProductPage/AddProductPage';
+import AddCategoryPage from './webpage/AddCategoryPage/AddCategoryPage';
+import AddBrandPage from './webpage/AddBrandPage/AddBrandPage';
 import SellingDashboardPage from './webpage/SellingDashboardPage/SellingDashboardPage';
 
 function App() {
@@ -30,6 +33,9 @@ function App() {
           <Route path="/adminproductpage" element={<AdminProductPage/>}/>
           <Route path="/admincategorypage" element={<AdminCategoryPage/>}/>
           <Route path="/adminbrandpage" element={<AdminBrandPage/>}/>
+          <Route path="/addproductpage" element={<AddProductPage/>}/>
+          <Route path="/addcategorypage" element={<AddCategoryPage/>}/>
+          <Route path="/addbrandpage" element={<AddBrandPage/>}/>
         </Routes>
       </Suspense>
     </Router>

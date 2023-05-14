@@ -17,11 +17,6 @@ module.exports = {
         'norwester' : ["Norwester"],
       }
     },
-    theme: {
-      gridTemplateRows: {
-        'auto-1fr': 'auto 1fr',
-      },
-    },
   },
   plugins: [
     require('@tailwindcss/typography'),
