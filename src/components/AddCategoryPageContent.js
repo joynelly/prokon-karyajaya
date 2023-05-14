@@ -1,13 +1,33 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import { getTokenFromLocalStorage } from '../lib/auth';
 
 function AddCategoryPageContent(){
 
     const [name, setName] = useState('');
-    const [categoryImage, setCategoryImage] = useState(null);
+    const [image, setImage] = useState(null);
 
     const handleFormSubmit = (e) => {
         // Mengarahkan ke halaman lain
-       
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('image', image);
+
+        fetch(`${process.env.REACT_APP_API_URL}/categories`, {
+            method: 'POST',
+            headers: {
+                "authorization": getTokenFromLocalStorage(),
+            },
+            body: formData
+        }).then(response => {
+            if(response.status === 200){
+                window.location.href = "/admincategorypage"
+            }else{
+                alert("Something went wrong, please try again later");
+            }
+        }).catch(error => {
+            console.log(error);
+        });
     };
 
     return(
@@ -29,7 +49,7 @@ function AddCategoryPageContent(){
                             <div className="col-span-1 row-span-1 rounded bg-white p-1 font-serif text-lg leading-8">
                                 <div>
                                     <p className="text-lg pl-2 pb-1 text-gray-400">Category Image: </p>
-                                    <input className="w-full rounded py-1 pl-2" type="file" id="categoryImage" onChange={(e) => setCategoryImage(e.target.files[0])}/>
+                                    <input className="w-full rounded py-1 pl-2" type="file" id="categoryImage" onChange={(e) => setImage(e.target.files[0])}/>
                                 </div>
                             </div>
                             <div className="col-span-1 row-span-1 rounded bg-white font-serif text-lg leading-8 text-center">

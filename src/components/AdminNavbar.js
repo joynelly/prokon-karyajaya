@@ -1,7 +1,13 @@
 import React from "react";
 import logo_kjs from "../assets/logo-kjs.png";
+import {useAuth} from "../lib/authHook";
 
 function AdminNavbar() {
+  useAuth();
+  const logoutHandler = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/";
+  };
   return (
     <nav className="bg-white-kj px-20 py-5">
       <div className="flex items-center justify-between">
@@ -29,7 +35,7 @@ function AdminNavbar() {
 
         {/* LogOut */}
         <div className="flex items-center">
-            <button className="bg-white-kj rounded-full p-2 mt-4">
+            <button className="bg-white-kj rounded-full p-2 mt-4" onClick={logoutHandler}>
                 <svg className="h-9 w-9 text-rose-500" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  
                     <path stroke="none" d="M0 0h24v24H0z"/>  
                     <path d="M7 6a7.75 7.75 0 1 0 10 0" />  <line x1="12" y1="4" x2="12" y2="12" />
