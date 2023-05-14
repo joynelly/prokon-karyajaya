@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import DataTable from "react-data-table-component";
 import moment from 'moment/moment';
-import {useAuth} from "../lib/authHook";
 import {getTokenFromLocalStorage} from "../lib/auth"
 
 const hanleDelete = (id, code) => {
@@ -87,7 +86,6 @@ const columns = [
 ];
 
 function AdminCategoryPageContent(){
-    useAuth();
     const [categories, setCategories] = useState([]);
     const [filteredCategories, setFilteredCategories] = useState([]);
 
