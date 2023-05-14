@@ -1,6 +1,6 @@
 import { Fragment, useState } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { ChevronDownIcon, MinusIcon, PlusIcon} from '@heroicons/react/20/solid'
+import { Menu, Transition } from '@headlessui/react'
+import { ChevronDownIcon} from '@heroicons/react/20/solid'
 import classNames from 'classnames'
 
 const jasa = [

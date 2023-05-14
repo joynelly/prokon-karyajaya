@@ -9,12 +9,18 @@ import DetailJasaPage from './webpage/DetailJasaPage/DetailProductPage';
 import AdminLoginPage from './webpage/AdminLoginPage/AdminLoginPage';
 import AdminLandingPage from './webpage/AdminLandingPage/AdminLandingPage';
 import AdminProductPage from './webpage/AdminProductPage/AdminProductPage';
-import AdminDetailProduct from './webpage/AdminDetailProductPage/AdminDetailProductPage';
+import AdminDetailProduct from './webpage/AdminProductPage/AdminDetailProductPage';
 import AdminCategoryPage from './webpage/AdminCategoryPage/AdminCategoryPage';
 import AdminBrandPage from './webpage/AdminBrandPage/AdminBrandPage';
-import AddProductPage from './webpage/AddProductPage/AddProductPage';
-import AddCategoryPage from './webpage/AddCategoryPage/AddCategoryPage';
-import AddBrandPage from './webpage/AddBrandPage/AddBrandPage';
+import AddProductPage from './webpage/AdminProductPage/AddProductPage';
+import AddCategoryPage from './webpage/AdminCategoryPage/AddCategoryPage';
+import AddBrandPage from './webpage/AdminBrandPage/AddBrandPage';
+import ListPeminjaman from './webpage/PeminjamanPage/ListPeminjaman';
+import ListPenjualan from './webpage/PenjualanPage/ListPenjualan';
+import AddPeminjaman from './webpage/PeminjamanPage/AddPeminjaman';
+import AddPenjualan from './webpage/PenjualanPage/AddPenjualan';
+import UpdatePenjualan from './webpage/PenjualanPage/UpdatePenjualan';
+import UpdatePeminjaman from './webpage/PeminjamanPage/UpdatePeminjaman';
 
 function App() {
   return (
@@ -36,6 +42,12 @@ function App() {
           <Route path="/addproductpage" element={<AddProductPage/>}/>
           <Route path="/addcategorypage" element={<AddCategoryPage/>}/>
           <Route path="/addbrandpage" element={<AddBrandPage/>}/>
+          <Route path="/adminpeminjaman" element={<ListPeminjaman/>}/>
+          <Route path="/adminpenjualan" element={<ListPenjualan/>}/>
+          <Route path="/addpeminjaman" element={<AddPeminjaman/>}/>
+          <Route path="/addpenjualan" element={<AddPenjualan/>}/>
+          <Route path="/updatepenjualan" element={<UpdatePenjualan/>}/>
+          <Route path="/updatepeminjaman" element={<UpdatePeminjaman/>}/>
         </Routes>
       </Suspense>
     </Router>

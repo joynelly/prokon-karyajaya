@@ -22,6 +22,12 @@ function AdminNavbar() {
           <a href="/adminlandingpage" className="font-norwester text-lg text-dark-blue-kj mx-4 mt-4 hover:bg-orange-kj hover:rounded hover:px-5 hover:py-1">
             DASHBOARD
           </a>
+          <a href="/adminpenjualan" className="font-norwester text-lg text-dark-blue-kj mx-4 mt-4 hover:bg-orange-kj hover:rounded hover:px-5 hover:py-1">
+            PENJUALAN
+          </a>
+          <a href="/adminpeminjaman" className="font-norwester text-lg text-dark-blue-kj mx-4 mt-4 hover:bg-orange-kj hover:rounded hover:px-5 hover:py-1">
+            PEMINJAMAN
+          </a>
           <a href="/adminproductpage" className="font-norwester text-lg text-dark-blue-kj mx-4 mt-4 hover:bg-orange-kj hover:rounded hover:px-5 hover:py-1">
             PRODUCTS
           </a>
