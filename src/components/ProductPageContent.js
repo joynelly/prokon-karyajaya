@@ -61,7 +61,7 @@ const products = [
     return (
         <a href="/detailproduct">
             <div className="flex flex-col items-center justify-center hover:drop-shadow-lg">
-                <div className="bg-white-kj rounded-md pb-2">
+                <div className="bg-white rounded-md pb-2">
                 <img src={product.image} alt={product.name} className="w-40 h-40 object-cover rounded-md" />
                 <h3 className="text-lg text-dark-blue-kj font-norwester uppercase font-medium my-2 px-2">{product.name}</h3>
                 <p className="text-gray-500 px-2">{product.price}</p>
