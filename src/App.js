@@ -21,6 +21,9 @@ import AddPeminjaman from './webpage/PeminjamanPage/AddPeminjaman';
 import AddPenjualan from './webpage/PenjualanPage/AddPenjualan';
 import UpdatePenjualan from './webpage/PenjualanPage/UpdatePenjualan';
 import UpdatePeminjaman from './webpage/PeminjamanPage/UpdatePeminjaman';
+import UpdateProduct from './webpage/AdminProductPage/UpdateProductPage';
+import UpdateCategory from './webpage/AdminCategoryPage/UpdateCategoryPage';
+import UpdateBrand from './webpage/AdminBrandPage/UpdateBrandPage';
 
 function App() {
   return (
@@ -36,7 +39,7 @@ function App() {
           <Route path="/adminlogin" element={<AdminLoginPage/>}/>
           <Route path="/adminlandingpage" element={<AdminLandingPage/>}/>
           <Route path="/adminproductpage" element={<AdminProductPage/>}/>
-          <Route path="/admindetailproduct" element={<AdminDetailProduct/>}/>
+          <Route path="/adminproductpage/:id" element={<AdminDetailProduct/>}/>
           <Route path="/admincategorypage" element={<AdminCategoryPage/>}/>
           <Route path="/adminbrandpage" element={<AdminBrandPage/>}/>
           <Route path="/addproductpage" element={<AddProductPage/>}/>
@@ -46,8 +49,12 @@ function App() {
           <Route path="/adminpenjualan" element={<ListPenjualan/>}/>
           <Route path="/addpeminjaman" element={<AddPeminjaman/>}/>
           <Route path="/addpenjualan" element={<AddPenjualan/>}/>
-          <Route path="/updatepenjualan" element={<UpdatePenjualan/>}/>
-          <Route path="/updatepeminjaman" element={<UpdatePeminjaman/>}/>
+          <Route path="/updatepenjualan/:id" element={<UpdatePenjualan/>}/>
+          <Route path="/updatepeminjaman/:id" element={<UpdatePeminjaman/>}/>
+          <Route path='/updateproduct/:id' element={<UpdateProduct/>} />
+          <Route path='/updatecategory/:id' element={<UpdateCategory/>} />
+          <Route path='/updatebrand/:id' element={<UpdateBrand/>} />
+          
         </Routes>
       </Suspense>
     </Router>
