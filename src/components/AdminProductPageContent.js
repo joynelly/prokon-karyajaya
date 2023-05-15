@@ -3,11 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import DataTable from "react-data-table-component";
 import moment from 'moment/moment';
-import {useAuth} from "../lib/authHook";
+import { useAuth } from "../lib/authHook";
 import { getTokenFromLocalStorage } from '../lib/auth';
 
 const hanleDelete = (id, code) => {
-    if(window.confirm(`Are you sure you want to delete this product (${code})? `)){
+    if (window.confirm(`Are you sure you want to delete this product (${code})? `)) {
         fetch(`${process.env.REACT_APP_API_URL}/products/${id}`, {
             method: "DELETE",
             headers: {
@@ -15,17 +15,17 @@ const hanleDelete = (id, code) => {
                 "authorization": getTokenFromLocalStorage(),
             },
         })
-        .then((res) => {
-            if(res.status === 200){
-                alert("Product deleted successfully");
-                window.location.reload();
-            }else{
-                alert(res.message);
-            } 
-        })
-        .catch((err) => {
-            alert(err.message);
-        });
+            .then((res) => {
+                if (res.status === 200) {
+                    alert("Product deleted successfully");
+                    window.location.reload();
+                } else {
+                    alert(res.message);
+                }
+            })
+            .catch((err) => {
+                alert(err.message);
+            });
     }
 };
 
@@ -83,20 +83,20 @@ const columns = [
         cell: (product) => {
             return (
                 <Fragment>
-                    <button className="bg-light-blue-kj rounded-xl p-2 px-3 m-1">
-                        <svg class="h-6 w-6 text-black"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  
+                    <a href={`/adminproductpage/${product.id}`} className="bg-light-blue-kj rounded-xl p-2 px-3 m-1">
+                        <svg class="h-6 w-6 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />  <circle cx="12" cy="12" r="3" />
                         </svg>
-                    </button>  
+                    </a>
                     <button className="bg-yellow-400 rounded-xl p-2 px-3 m-1">
-                        <svg class="h-6 w-6 text-black" width="24"  height="24"  viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  
-                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />  
+                        <svg class="h-6 w-6 text-black" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
                             <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
                         </svg>
-                    </button>  
-                    <button className="bg-red-400 rounded-xl p-2 px-3 m-1" onClick={()=>{hanleDelete(product.id, product.product_code)}}>
-                        <svg class="h-6 w-6 text-black"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                    </button>
+                    <button className="bg-red-400 rounded-xl p-2 px-3 m-1" onClick={() => { hanleDelete(product.id, product.product_code); }}>
+                        <svg class="h-6 w-6 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                         </svg>
                     </button>
                 </Fragment>
@@ -107,7 +107,7 @@ const columns = [
 ];
 
 
-function AdminProductPageContent(){
+function AdminProductPageContent() {
     useAuth();
     const [products, setProducts] = useState([]);
     const [filterProducts, setFilterProducts] = useState("");
@@ -132,7 +132,7 @@ function AdminProductPageContent(){
         setProducts(newDatas);
     };
 
-    return(
+    return (
         <Fragment>
             <div className="w-100 relative mt-3 mb-7 mx-20 rounded-xl bg-pink-kj">
                 {/* Judul */}
@@ -158,16 +158,16 @@ function AdminProductPageContent(){
                         </button>
                     </div>
                 </div>
-                <hr className="border-grey-kj border-b-1 my-6"/>
+                <hr className="border-grey-kj border-b-1 my-6" />
                 {/* List Product */}
                 <div className="container mx-auto">
                     <DataTable
-                    columns={columns}
-                    data={products}
-                    pagination
-                    responsive
-                    dense
-                    highlightOnHover
+                        columns={columns}
+                        data={products}
+                        pagination
+                        responsive
+                        dense
+                        highlightOnHover
                     />
                 </div>
             </div>

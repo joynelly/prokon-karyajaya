@@ -1,6 +1,6 @@
 import React from "react";
 import logo_kjs from "../assets/logo-kjs.png";
-import {useAuth} from "../lib/authHook";
+import { useAuth } from "../lib/authHook";
 
 function AdminNavbar() {
   useAuth();
@@ -14,7 +14,7 @@ function AdminNavbar() {
         {/* Company logo */}
         <div className="flex-shrink-0 flex items-center">
           <img src={logo_kjs} alt="Company logo" className="h-10" />
-          <span class="text-3xl font-norwester font-extrabold whitespace-nowrap text-blue-800 uppercase mt-4 ml-2">Karyajaya</span>
+          <span class="text-3xl font-norwester font-extrabold whitespace-nowrap text-blue-800 uppercase mt-4 ml-2">Karyajaya Survey</span>
         </div>
 
         {/* Menu options */}
@@ -41,15 +41,15 @@ function AdminNavbar() {
 
         {/* LogOut */}
         <div className="flex items-center">
-            <button className="bg-white-kj rounded-full p-2 mt-4" onClick={logoutHandler}>
-                <svg className="h-9 w-9 text-rose-500" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  
-                    <path stroke="none" d="M0 0h24v24H0z"/>  
-                    <path d="M7 6a7.75 7.75 0 1 0 10 0" />  <line x1="12" y1="4" x2="12" y2="12" />
-                </svg>
-            </button>
+          <button className="bg-white-kj rounded-full p-2 mt-4" onClick={logoutHandler}>
+            <svg className="h-9 w-9 text-rose-500" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" />
+              <path d="M7 6a7.75 7.75 0 1 0 10 0" />  <line x1="12" y1="4" x2="12" y2="12" />
+            </svg>
+          </button>
         </div>
       </div>
-      <hr className="border-rose-500 border-b-2 mt-6"/>
+      <hr className="border-rose-500 border-b-2 mt-6" />
     </nav>
   );
 }

@@ -1,8 +1,23 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import logo_kjs from "../assets/logo-kjs.png";
+import axios from "axios";
 
-function Footer(){
-    return(
+function Footer() {
+    const [brands, setBrands] = useState([]);
+    const [categories, setCategories] = useState([]);
+
+    const getFootersData = async () => {
+        const resBrand = await axios.get(`${process.env.REACT_APP_API_URL}/brands?limit=6`);
+        const resCategory = await axios.get(`${process.env.REACT_APP_API_URL}/categories?limit=6`);
+        setBrands(resBrand.data);
+        setCategories(resCategory.data);
+    };
+
+    useEffect(() => {
+        getFootersData();
+    }, []);
+
+    return (
         <Fragment>
             <footer className="bg-dark-blue-kj">
                 <div className="flex flex-row flex-wrap justify-between">
@@ -15,34 +30,32 @@ function Footer(){
                             </ul>
                         </a>
                     </div>
-                    <div className="px-20 py-5 grid grid-cols-2 gap-100">
+                    <div className="px-20 py-5 grid grid-cols-3 gap-100">
                         <div className="pr-10">
-                            <h2 className="text-lg font-norwester font-bold text-white">OUR PRODUCT</h2>
-                            <hr className="border-white mb-3"/>
+                            <h2 className="text-lg font-norwester font-bold text-white">BRANDS</h2>
+                            <hr className="border-white mb-3" />
                             <ul className="text-sm text-white font-medium">
-                                <li className="mb-1">
-                                    <a href="/" class="hover:underline font-norwester">TOTAL STATION</a>
-                                </li>
-                                <li class="mb-1">
-                                    <a href="/" class="hover:underline font-norwester">AUTOLEVEL</a>
-                                </li>
-                                <li class="mb-1">
-                                    <a href="/" class="hover:underline font-norwester">ACCECORIES</a>
-                                </li>
-                                <li class="mb-1">
-                                    <a href="/" class="hover:underline font-norwester">CHARGER</a>
-                                </li>
-                                <li class="mb-1">
-                                    <a href="/" class="hover:underline font-norwester">BATTERY</a>
-                                </li>
-                                <li class="mb-1">
-                                    <a href="/" class="hover:underline font-norwester">THEODOLITE</a>
-                                </li>
+                                {brands.map((brand) => (
+                                    <li className="mb-1" key={brand.id}>
+                                        <a href={`/product?brand=${brand.name}`} class="hover:underline capitalize font-norwester">{brand.name}</a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className="pr-10">
+                            <h2 className="text-lg font-norwester font-bold text-white">CATEGORIES</h2>
+                            <hr className="border-white mb-3" />
+                            <ul className="text-sm text-white font-medium">
+                                {categories.map((category) => (
+                                    <li className="mb-1" key={category.id}>
+                                        <a href={`/product?category=${category.name}`} class="hover:underline capitalize font-norwester">{category.name}</a>
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                         <div className="pl-10">
                             <h2 className="text-lg font-norwester font-bold text-white">ABOUT US</h2>
-                            <hr className="border-white mb-3"/>
+                            <hr className="border-white mb-3" />
                             <ul className="text-sm text-white font-medium">
                                 <li className="mb-1">
                                     <a href="/" class="flex items-center">
@@ -75,7 +88,7 @@ function Footer(){
                 </div>
             </footer>
         </Fragment>
-    )
+    );
 }
 
 export default Footer;
