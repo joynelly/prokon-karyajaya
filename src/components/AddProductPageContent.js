@@ -47,7 +47,9 @@ function AddProductPageContent(){
         formData.append('stock', stock);
         formData.append('tokopedia_url', tokopediaUrl);
         formData.append('cover', coverImage);
-        formData.append('product_image', productImage);
+        for(let i = 0; i < productImage.length; i++){
+            formData.append('product_images', productImage[i]);
+        }
         formData.append('description', description);
         
         fetch(`${process.env.REACT_APP_API_URL}/products`, {
@@ -62,7 +64,7 @@ function AddProductPageContent(){
             console.log(res.status);
             if(res.status === 200){
                 alert("Product added successfully");
-                window.location.href = "/admin/products";
+                window.location.href = "/adminproductpage";
             }else{
                 alert(res.message);
             }   

@@ -5,12 +5,13 @@ import DataTable from "react-data-table-component";
 import moment from 'moment/moment';
 import {useAuth} from "../lib/authHook";
 import { getTokenFromLocalStorage } from '../lib/auth';
+import parse from 'html-react-parser';
 
 //Data yang ditampilkan masih menggunakan data produk
 
 const hanleDelete = (id, code) => {
     if(window.confirm(`Are you sure you want to delete this product (${code})? `)){
-        fetch(`${process.env.REACT_APP_API_URL}/products/${id}`, {
+        fetch(`${process.env.REACT_APP_API_URL}/peminjaman/${id}`, {
             method: "DELETE",
             headers: {
                 // "authorization": `${localStorage.getItem("token")}`,
@@ -39,31 +40,45 @@ const columns = [
         width: "50px",
     },
     {
-        name: "Product ID",
-        selector: "product_code",
+        name: "Kode Peminjaman",
+        selector: "kode_peminjaman",
         sortable: true,
     },
     {
-        name: "Tanggal Keluar",
-        selector: "updated_at",
+        name: "Product Code",
+        selector: "product_code",
         sortable: true,
         cell: (val) => {
-            return moment(val.updated_at).format('DD MMM YYYY HH:mm');
+            let code = "";
+            val.detail_peminjamans.forEach(element => {
+                code += `${element.product.product_code} - ${element.product.name}<br/>`;
+            });
+            return parse(code);
+        }
+    },
+    {
+        name: "Tanggal Keluar",
+        selector: "tanggal_keluar",
+        sortable: true,
+        cell: (val) => {
+            return moment(val.tanggal_keluar).format('DD MMM YYYY HH:mm');
         }
     },{
         name: "Tanggal Kembali",
-        selector: "updated_at",
+        selector: "tanggal_kembali",
         sortable: true,
         cell: (val) => {
-            return moment(val.updated_at).format('DD MMM YYYY HH:mm');
+            return moment(val.tanggal_kembali).format('DD MMM YYYY HH:mm');
         }
     },
     {
         name: "Tanggal Dikembalikan",
-        selector: "updated_at",
+        selector: "tanggal_dikembalikan",
         sortable: true,
         cell: (val) => {
-            return moment(val.updated_at).format('DD MMM YYYY HH:mm');
+            if(val.tanggal_dikembalikan)
+                return moment(val.tanggal_dikembalikan).format('DD MMM YYYY HH:mm');
+            return 'Belum Dikembalikan'
         }
     },
     {
@@ -71,7 +86,7 @@ const columns = [
         align: "left",
         sortable: false,
         width: "200px",
-        cell: (product) => {
+        cell: (peminjaman) => {
             return (
                 <Fragment>
                     <button className="bg-light-blue-kj rounded-xl p-2 px-3 m-1">
@@ -79,13 +94,13 @@ const columns = [
                             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />  <circle cx="12" cy="12" r="3" />
                         </svg>
                     </button>  
-                    <button className="bg-yellow-400 rounded-xl p-2 px-3 m-1">
+                    <button className="bg-yellow-400 rounded-xl p-2 px-3 m-1" onClick={()=>{window.location.href = `/updatepeminjaman/${peminjaman.id}`}}  >
                         <svg class="h-6 w-6 text-black" width="24"  height="24"  viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  
                             <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />  
                             <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
                         </svg>
                     </button>  
-                    <button className="bg-red-400 rounded-xl p-2 px-3 m-1" onClick={()=>{hanleDelete(product.id, product.product_code)}}>
+                    <button className="bg-red-400 rounded-xl p-2 px-3 m-1" onClick={()=>{hanleDelete(peminjaman.id, peminjaman.kode_peminjaman)}}>
                         <svg class="h-6 w-6 text-black"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
                         </svg>
@@ -100,15 +115,15 @@ const columns = [
 
 function AdminListPeminjamanContent(){
     useAuth();
-    const [products, setProducts] = useState([]);
-    const [filterProducts, setFilterProducts] = useState("");
+    const [peminjamans, setPeminjamans] = useState([]);
+    const [filterPeminjamans, setFilterPeminjamans] = useState("");
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}/products?sort=id&order=asc`)
+        fetch(`${process.env.REACT_APP_API_URL}/peminjaman?sort=id&order=asc`)
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
-                setProducts(data);
-                setFilterProducts(data);
+                setPeminjamans(data);
+                setFilterPeminjamans(data);
             })
             .catch((err) => {
                 console.log(err.message);
@@ -116,11 +131,11 @@ function AdminListPeminjamanContent(){
     }, []);
 
     const handleFilter = (e) => {
-        const newDatas = filterProducts.filter((product) => {
-            return product.name.toLowerCase().includes(e.target.value.toLowerCase());
+        const newDatas = filterPeminjamans.filter((peminjaman) => {
+            return peminjaman.kode_peminjaman.toLowerCase().includes(e.target.value.toLowerCase());
         }
         );
-        setProducts(newDatas);
+        setPeminjamans(newDatas);
     };
 
     return(
@@ -154,7 +169,7 @@ function AdminListPeminjamanContent(){
                 <div className="container mx-auto">
                     <DataTable
                     columns={columns}
-                    data={products}
+                    data={peminjamans}
                     pagination
                     responsive
                     dense

@@ -1,6 +1,53 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import { useParams } from 'react-router';
+import { getTokenFromLocalStorage } from '../lib/auth';
 
 function UpdateCategoryPageContent() {
+    const { id } = useParams();
+    const [name, setName] = useState("");
+    const [image, setImage] = useState(null);
+
+    useEffect(() => {
+        fetch(`${process.env.REACT_APP_API_URL}/categories/${id}`)
+        .then((res) => res.json())
+        .then((data) => {
+            setName(data.name);
+            setImage(data.image);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    }, [id]);
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append("name", name);
+        if(image !== null){
+            formData.append("image", image);
+        }
+        fetch(`${process.env.REACT_APP_API_URL}/categories/${id}`, {
+            method: "PUT",
+            headers: {
+                "authorization": getTokenFromLocalStorage(),
+            },
+            body: formData,
+        })
+        .then((res) => {
+            if(res.status === 200){
+                console.log(res.json());
+                alert("Category berhasil diupdate!");
+                window.location.href = "/categories";
+            }
+            else{
+                throw new Error("Gagal update category " + res.status);
+            }
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    };  
+
     return(
         <Fragment>
             <div className="w-100 relative mt-3 mb-7 mx-20 rounded-xl bg-grey-kj">

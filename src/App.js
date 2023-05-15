@@ -20,7 +20,10 @@ import AddPeminjaman from './webpage/PeminjamanPage/AddPeminjaman';
 import AddPenjualan from './webpage/PenjualanPage/AddPenjualan';
 import UpdatePenjualan from './webpage/PenjualanPage/UpdatePenjualan';
 import UpdatePeminjaman from './webpage/PeminjamanPage/UpdatePeminjaman';
-import AdminDetailProductPage from './webpage/AdminProductPage/AdminDetailProductPage';
+import UpdateProduct from './webpage/AdminProductPage/UpdateProductPage';
+import UpdateCategory from './webpage/AdminCategoryPage/UpdateCategoryPage';
+import UpdateBrand from './webpage/AdminBrandPage/UpdateBrandPage';
+import AdminDetailProduct from './webpage/AdminProductPage/AdminDetailProductPage';
 
 function App() {
   return (
@@ -30,13 +33,13 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/aboutus" element={<AboutUsPage />} />
           <Route path="/product" element={<ProductPage />} />
-          <Route path="/product/:id" element={<DetailProductPage />} />
+          <Route path="/detailproduct" element={<DetailProductPage />} />
           <Route path="/jasa" element={<JasaPage />} />
           <Route path="/detailjasa" element={<DetailJasaPage />} />
           <Route path="/adminlogin" element={<AdminLoginPage />} />
           <Route path="/adminlandingpage" element={<AdminLandingPage />} />
           <Route path="/adminproductpage" element={<AdminProductPage />} />
-          <Route path="/adminproductpage/:id" element={<AdminDetailProductPage />} />
+          <Route path="/adminproductpage/:id" element={<AdminDetailProduct />} />
           <Route path="/admincategorypage" element={<AdminCategoryPage />} />
           <Route path="/adminbrandpage" element={<AdminBrandPage />} />
           <Route path="/addproductpage" element={<AddProductPage />} />
@@ -46,8 +49,12 @@ function App() {
           <Route path="/adminpenjualan" element={<ListPenjualan />} />
           <Route path="/addpeminjaman" element={<AddPeminjaman />} />
           <Route path="/addpenjualan" element={<AddPenjualan />} />
-          <Route path="/updatepenjualan" element={<UpdatePenjualan />} />
-          <Route path="/updatepeminjaman" element={<UpdatePeminjaman />} />
+          <Route path="/updatepenjualan/:id" element={<UpdatePenjualan />} />
+          <Route path="/updatepeminjaman/:id" element={<UpdatePeminjaman />} />
+          <Route path='/updateproduct/:id' element={<UpdateProduct />} />
+          <Route path='/updatecategory/:id' element={<UpdateCategory />} />
+          <Route path='/updatebrand/:id' element={<UpdateBrand />} />
+
         </Routes>
       </Suspense>
     </Router>
