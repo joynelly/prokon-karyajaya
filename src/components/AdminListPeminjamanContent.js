@@ -51,7 +51,7 @@ const columns = [
         cell: (val) => {
             let code = "";
             val.detail_peminjamans.forEach(element => {
-                code += `${element.product.product_code} - ${element.product.name}<br/>`;
+                code += `${element.product.product_code}<br/>`;
             });
             return parse(code);
         }
@@ -89,11 +89,11 @@ const columns = [
         cell: (peminjaman) => {
             return (
                 <Fragment>
-                    <button className="bg-light-blue-kj rounded-xl p-2 px-3 m-1">
+                    {/* <button className="bg-light-blue-kj rounded-xl p-2 px-3 m-1">
                         <svg class="h-6 w-6 text-black"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  
                             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />  <circle cx="12" cy="12" r="3" />
                         </svg>
-                    </button>  
+                    </button>   */}
                     <button className="bg-yellow-400 rounded-xl p-2 px-3 m-1" onClick={()=>{window.location.href = `/updatepeminjaman/${peminjaman.id}`}}  >
                         <svg class="h-6 w-6 text-black" width="24"  height="24"  viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  
                             <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />  

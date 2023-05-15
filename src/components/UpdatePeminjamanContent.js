@@ -34,9 +34,10 @@ function UpdatePeminjamanContent(){
         .then((data) => {
             setProduct([]);
             data.detail_peminjamans.forEach(element => {
-                element.value = element.id;
-                element.label = `${element.product.product_code} - ${element.product.name}`;
-                setProduct(product => [...product, element]);
+                let default_value = {};
+                default_value.value = element.product.id;
+                default_value.label = `${element.product.product_code} - ${element.product.name}`;
+                setProduct(product => [...product, default_value]);
             });
             let date = new Date(data.tanggal_keluar).toLocaleString();
             let parsedDate = parse(date, 'M/d/yyyy, h:mm:ss a', new Date());
@@ -90,6 +91,22 @@ function UpdatePeminjamanContent(){
         });
     };
 
+    const filterOptions = (candidate, input) => {
+        if (input) {
+          if (candidate.label.toLowerCase().includes(input.toLowerCase()))
+            return true;
+          if (
+            product.some((opt) => {
+              if (opt.value === candidate.value) return true;
+              else return false;
+            })
+          )
+            return true;
+          return false;
+        }
+        return true;
+      };
+
     return(
         <Fragment>
             <div className="w-100 relative mt-3 mb-7 mx-20 rounded-xl bg-grey-kj">
@@ -116,7 +133,7 @@ function UpdatePeminjamanContent(){
                                     options={productList}
                                     isSearchable
                                     isMulti
-                                    isDisabled
+                                    filterOption={filterOptions}
                                 />
                                     {/* <input className="w-full rounded py-1 pl-2" type="text" id="product_id" placeholder="Product ID"/> */}
                                 </div>

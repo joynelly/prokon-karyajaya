@@ -54,7 +54,7 @@ function App() {
           <Route path='/updateproduct/:id' element={<UpdateProduct />} />
           <Route path='/updatecategory/:id' element={<UpdateCategory />} />
           <Route path='/updatebrand/:id' element={<UpdateBrand />} />
-
+          <Route path="*" element={<h1>Not Found</h1>} />
         </Routes>
       </Suspense>
     </Router>
