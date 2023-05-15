@@ -95,7 +95,7 @@ function UpdateProductPageContent() {
         .then((res) => {
             if(res.status === 200){
                 alert('Product updated successfully!');
-                window.location.href = '/products';
+                window.location.href = '/adminproductpage';
             }
         })
         .catch((err) => {
@@ -192,7 +192,7 @@ function UpdateProductPageContent() {
                             <div className="col-span-2 row-span-1 rounded bg-white p-1 font-serif text-lg leading-8">
                                 <div>
                                     <p className="text-lg pl-2 pb-1 text-gray-400">Product Image: </p>
-                                    <div className='flex flex-row items-center'>
+                                    <div className='flex flex-row items-center flex-wrap'>
                                     {
                                         oldProductImage.map((image) => (
                                             
