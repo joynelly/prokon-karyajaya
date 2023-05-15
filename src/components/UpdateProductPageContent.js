@@ -1,6 +1,8 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { getTokenFromLocalStorage } from '../lib/auth';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 function UpdateProductPageContent() {
     const [name, setName] = useState('');
@@ -190,22 +192,43 @@ function UpdateProductPageContent() {
                             <div className="col-span-2 row-span-1 rounded bg-white p-1 font-serif text-lg leading-8">
                                 <div>
                                     <p className="text-lg pl-2 pb-1 text-gray-400">Product Image: </p>
+                                    <div className='flex flex-row items-center'>
                                     {
                                         oldProductImage.map((image) => (
-                                            <div className="flex flex-row items-center">
-                                                <img className="w-100 h-40" src={image.image_url} alt={image.name}/> 
-                                                <button type="button" className="bg-red-500 text-white" 
-                                                    data-image-url={image.image_url} data-id={image.id} onClick={handleDeleteProductImage}>Delete</button>
-                                            </div>
+                                            
+                                                <div className='m-1'>
+                                                    <img className="w-100 h-40" src={image.image_url} alt={image.name}/> 
+                                                    <button type="button" className="bg-red-500 text-white w-full" 
+                                                        data-image-url={image.image_url} data-id={image.id} onClick={handleDeleteProductImage}>Delete</button>
+                                                </div>
+                                            
                                         ))
                                     }
+                                    </div>
                                     <p className="text-lg pl-2 pb-1 text-gray-400">Add Another Images: </p>
                                     <input className="w-full rounded py-1 pl-2" type="file" id="productImage" multiple onChange={(e) => setProductImage(e.target.files)}/>
                                 </div>
                             </div>
                             <div className="col-span-2 row-span-1 rounded bg-white p-1 font-serif text-lg leading-8 text-center">
-                                <div>
-                                    <textarea className="w-full h-40 rounded py-1 pl-2" id="description" value={description} onChange={(e) => setDescription(e.target.value)} placeholder ="Description"/>
+                            <div className='h-80'>
+                                    <ReactQuill
+                                        theme="snow"
+                                        value={description}
+                                        onChange={setDescription}
+                                        className='w-full rounded py-1 pl-2 h-60'
+                                        formats={{
+                                            header: ['1', '2', '3', '4', '5', '6', false],
+                                            bold: 'bold',
+                                            italic: 'italic',
+                                            underline: 'underline',
+                                            strike: 'strike',
+                                            list: ['ordered', 'bullet'],
+                                            indent: ['-1', '+1'],
+                                            align: ['center', 'right', 'justify'],
+                                            link: 'link',
+                                        }}
+                                    />
+                                    {/* <textarea className="w-full h-40 rounded py-1 pl-2" id="description" value={description} onChange={(e) => setDescription(e.target.value)} placeholder ="Description"/> */}
                                 </div>
                             </div>
                             <div className="col-span-2 row-span-1 rounded bg-white font-serif text-lg leading-8 text-center">

@@ -10,7 +10,7 @@ import { getTokenFromLocalStorage } from '../lib/auth';
 
 const hanleDelete = (id, code) => {
     if(window.confirm(`Are you sure you want to delete this product (${code})? `)){
-        fetch(`${process.env.REACT_APP_API_URL}/products/${id}`, {
+        fetch(`${process.env.REACT_APP_API_URL}/penjualan/${id}`, {
             method: "DELETE",
             headers: {
                 // "authorization": `${localStorage.getItem("token")}`,

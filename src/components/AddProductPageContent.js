@@ -1,5 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { getTokenFromLocalStorage } from '../lib/auth';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 function AddProductPageContent(){
     const [name, setName] = useState('');
@@ -142,8 +144,25 @@ function AddProductPageContent(){
                                 </div>
                             </div>
                             <div className="col-span-2 row-span-1 rounded bg-white p-1 font-serif text-lg leading-8 text-center">
-                                <div>
-                                    <textarea className="w-full h-40 rounded py-1 pl-2" id="description" value={description} onChange={(e) => setDescription(e.target.value)} placeholder ="Description"/>
+                                <div className='h-80'>
+                                    <ReactQuill
+                                        theme="snow"
+                                        value={description}
+                                        onChange={setDescription}
+                                        className='w-full rounded py-1 pl-2 h-60'
+                                        formats={{
+                                            header: ['1', '2', '3', '4', '5', '6', false],
+                                            bold: 'bold',
+                                            italic: 'italic',
+                                            underline: 'underline',
+                                            strike: 'strike',
+                                            list: ['ordered', 'bullet'],
+                                            indent: ['-1', '+1'],
+                                            align: ['center', 'right', 'justify'],
+                                            link: 'link',
+                                        }}
+                                    />
+                                    {/* <textarea className="w-full h-40 rounded py-1 pl-2" id="description" value={description} onChange={(e) => setDescription(e.target.value)} placeholder ="Description"/> */}
                                 </div>
                             </div>
                             <div className="col-span-2 row-span-1 rounded bg-white font-serif text-lg leading-8 text-center">
