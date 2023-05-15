@@ -6,7 +6,6 @@ import { parse, format } from 'date-fns';
 
 function UpdatePenjualanContent(){
     const [product, setProduct] = useState([]);
-    const [defaultProduct, setDefaultProduct] = useState([]);
     const [productList, setProductList] = useState([]);
     const [tgl_penjualan, setTgl_penjualan] = useState('');
     const { id } = useParams();
@@ -67,12 +66,12 @@ function UpdatePenjualanContent(){
             if(res.status === 200){
                 return res.json();
             } else {
-                throw Error("Gagal mengupdate penjualan");
+                throw Error("Gagal mengupdate penjualan " + res.status);
             }
         })
         .then((data) => {
             console.log(data);
-            window.location.href = '/penjualan';
+            window.location.href = '/adminpenjualan';
         })
         .catch((err) => {
             console.log(err);
