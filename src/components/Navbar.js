@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import logo_kjs from "../assets/logo-kjs.png";
 import { useNavigate } from "react-router-dom";
+import { SearchContext } from "../lib/searchContext";
 
 function Navbar() {
-  const [query, setQuery] = useState('');
+  const { searchKeyword, setSearchKeyword } = useContext(SearchContext);
   const navigate = useNavigate();
 
-  const search = () => {
-    navigate(`/product?query=${query}`);
+  const search = (e) => {
+    e.preventDefault();
+    navigate(`/product`);
   };
 
   return (
@@ -23,16 +25,16 @@ function Navbar() {
 
         {/* Menu options */}
         <div className="hidden md:flex items-center justify-center">
-          <a href="/" className="font-norwester text-lg text-dark-blue-kj mx-4 mt-4 hover:bg-orange-kj hover:rounded hover:px-5 hover:py-1">
+          <a href="/" className="font-norwester text-lg text-dark-blue-kj hover:text-white mx-4 mt-4 hover:bg-orange-kj hover:rounded hover:px-5 hover:py-1">
             HOME
           </a>
-          <a href="/product" className="font-norwester text-lg text-dark-blue-kj mx-4 mt-4 hover:bg-orange-kj hover:rounded hover:px-5 hover:py-1">
+          <a href="/product" className="font-norwester text-lg text-dark-blue-kj hover:text-white mx-4 mt-4 hover:bg-orange-kj hover:rounded hover:px-5 hover:py-1">
             PRODUCT
           </a>
-          <a href="/jasa" className="font-norwester text-lg text-dark-blue-kj mx-4 mt-4 hover:bg-orange-kj hover:rounded hover:px-5 hover:py-1">
+          <a href="/jasa" className="font-norwester text-lg text-dark-blue-kj hover:text-white mx-4 mt-4 hover:bg-orange-kj hover:rounded hover:px-5 hover:py-1">
             JASA
           </a>
-          <a href="/aboutus" className="font-norwester text-lg text-dark-blue-kj mx-4 mt-4 hover:bg-orange-kj hover:rounded hover:px-5 hover:py-1">
+          <a href="/aboutus" className="font-norwester text-lg text-dark-blue-kj hover:text-white mx-4 mt-4 hover:bg-orange-kj hover:rounded hover:px-5 hover:py-1">
             ABOUT US
           </a>
         </div>
@@ -43,8 +45,8 @@ function Navbar() {
             type="text"
             placeholder="Search"
             className="border rounded-full py-2 px-4 bg-grey-orange-kj text-white mr-2"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            value={searchKeyword}
+            onChange={(e) => setSearchKeyword(e.target.value)}
           />
           <button className="bg-orange-kj rounded-full p-2">
             <FontAwesomeIcon icon={faSearch} className="text-white" />
