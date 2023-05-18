@@ -33,7 +33,7 @@ function ProductPageContent() {
   const [sort, setSort] = useState('');
   const [order, setOrder] = useState('');
   const [sortName, setSortName] = useState('newest');
-  const { searchKeyword, setSearchKeyword } = useContext(SearchContext);
+  const { searchKeyword } = useContext(SearchContext);
 
   const filters = [
     {
@@ -80,6 +80,27 @@ function ProductPageContent() {
     };
     getFilters();
   }, []);
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    let brandParams = '';
+    let categoryParams = '';
+    if (urlParams.get('brand')) {
+      brandParams = urlParams.get('brand');
+    }
+    if (urlParams.get('category')) {
+      categoryParams = urlParams.get('category');
+    }
+
+    const fetchFooter = async () => {
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/products?category=${categoryParams}&brand=${brandParams}`);
+      setProducts(res.data);
+    };
+
+    fetchFooter();
+  }, []);
+
+
 
   brands.map((br) => {
     const data = {
