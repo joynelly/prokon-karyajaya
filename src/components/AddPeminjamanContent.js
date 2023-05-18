@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { getTokenFromLocalStorage } from '../lib/auth';
 import Select from 'react-select';
 
+
 function AddPeminjamanContent(){
     const [product, setProduct] = useState('');
     const [productList, setProductList] = useState([]);

@@ -40,6 +40,9 @@ function DetailProductContent() {
         ).format(money);
     };
 
+    const waText = encodeURIComponent(`Hai, apakah  ${product.name} dari ${window.location.href} masih ada?`)
+    
+
     let isTokped = false;
     if (product.tokopedia_url) {
         isTokped = true;
@@ -77,7 +80,7 @@ function DetailProductContent() {
                             <div className="col-span-4 row-span-1 rounded-xl bg-white p-2 font-serif text-3xl leading-8 text-center">
                                 {formatRupiah(product.price)}
                             </div>
-                            <a href="https://wa.me/+6281264580344" target="_blank" rel="noopener noreferrer" className={classNames(
+                            <a href={`https://wa.me/+6281264580344?text=${waText}`} target="_blank" rel="noopener noreferrer" className={classNames(
                                 "flex justify-center row-span-1 rounded-xl bg-green-700 hover:bg-green-600 text-white p-2 font-serif text-xl leading-8 text-center",
                                 isTokped ? " col-span-2 " : "col-span-4"
                             )}>
